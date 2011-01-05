@@ -1,8 +1,9 @@
 <?php
 /*
 Plugin Name: Toscho’s Magic Widgets
+Plugin URI:  http://toscho.de/2011/wordpress-magische-widgets/
 Description: Extra widgets for your HTML headers and footers.
-Version:     1.0
+Version:     1.1
 Author:      Thomas Scholz
 Author URI:  http://toscho.de
 License:     GPL v2
@@ -11,8 +12,8 @@ License:     GPL v2
 add_action( 'widgets_init', array ( 'Toscho_Magic_Widgets', 'init' ), 20 );
 
 /**
+ * Master class.
  * @version 1.0
- *
  */
 class Toscho_Magic_Widgets
 {
@@ -56,6 +57,10 @@ class Toscho_Magic_Widgets
 		// Uppercase letters don’t work.
 		$this->prefix = strtolower( __CLASS__ );
 
+		// You may add or remove actions here.
+		// Use add_filter( 'magic_widgets', 'your custom_filter', 10, 1 );
+		$this->actions = apply_filters( 'magic_widgets_actions', $this->actions );
+
 		// The extra widget.
 		register_widget( 'Unfiltered_Text_Widget' );
 
@@ -92,14 +97,18 @@ class Toscho_Magic_Widgets
 
 /**
  * Simpified copy of the native text widget class.
+ * @version 1.0
  */
 class Unfiltered_Text_Widget extends WP_Widget
 {
 	public function __construct()
 	{
+		// You may change the name per filter.
+		// Use add_filter( 'magic_widgets_name', 'your custom_filter', 10, 1 );
+		$widgetname = apply_filters( 'magic_widgets_name', 'Unfiltered Text' );
 		parent::__construct(
 			'unfiltered_text'
-		,	'Unfiltered Text'
+		,	$widgetname
 		,	array( 'description' => 'Pure Markup' )
 		,	array( 'width' => 300, 'height' => 150 )
 		);
