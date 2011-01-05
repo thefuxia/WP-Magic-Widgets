@@ -58,7 +58,7 @@ class Toscho_Magic_Widgets
 		$this->prefix = strtolower( __CLASS__ );
 
 		// You may add or remove actions here.
-		// Use add_filter( 'magic_widgets', 'your custom_filter', 10, 1 );
+		// Use add_filter( 'magic_widgets_actions', 'your custom_filter', 10, 1 );
 		$this->actions = apply_filters( 'magic_widgets_actions', $this->actions );
 
 		// The extra widget.
