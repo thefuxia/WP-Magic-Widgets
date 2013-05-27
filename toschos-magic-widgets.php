@@ -173,15 +173,6 @@ class Unfiltered_Text_Widget extends WP_Widget
 		?>"><?php
 			echo $text;
 		?></textarea>
-		<?php
-		/*
-		if ( ! empty ( $text ) )
-		{
-			print '<h3>Preview</h3><div style="border:3px solid #369;padding:10px">'
-			. $instance['text'] . '</div>';
-		}
-		*/
-		?>
 <?php
 	}
 }
