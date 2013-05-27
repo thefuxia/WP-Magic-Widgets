@@ -174,12 +174,24 @@ class Unfiltered_Text_Widget extends WP_Widget
 				'text' => ''
 			)
 		);
-		$text     = format_to_edit( $instance[ 'text' ] );
-		printf(
+		$text = format_to_edit( $instance[ 'text' ] );
+		print $this->get_textarea( $text, 'text' );
+	}
+
+	/**
+	 * Create the textarea for the main content.
+	 *
+	 * @param  string $content
+	 * @param  string $name
+	 * @return string
+	 */
+	protected function get_textarea( $content, $name )
+	{
+		return sprintf(
 			'<textarea class="widefat" rows="7" cols="20" id="%1$s" name="%2$s">%3$s</textarea>',
-			$this->get_field_id( 'text' ),
-			$this->get_field_name( 'text' ),
-			$text
+			$this->get_field_id( $name ),
+			$this->get_field_name( $name ),
+			$content
 		);
 	}
 }
