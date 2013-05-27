@@ -3,7 +3,7 @@
 Plugin Name: Toscho’s Magic Widgets
 Plugin URI:  http://toscho.de/2011/wordpress-magische-widgets/
 Description: Extra widgets for your HTML headers and footers.
-Version:     1.1
+Version:     2013.05.28
 Author:      Thomas Scholz
 Author URI:  http://toscho.de
 License:     GPL v2
@@ -37,25 +37,31 @@ class Toscho_Magic_Widgets
 
 	/**
 	 * Handler for the action 'widgets_init'. Instantiates this class.
+	 * @uses apply_filters( 'tmw_class', __CLASS__ )
 	 * @return void
 	 */
 	public static function init()
 	{
+		// If want to use another class (an extension maybe),
+		// change the class name here.
+		$class = apply_filters( 'tmw_class', __CLASS__ );
+
 		// Named global variable to make access for other scripts easier.
-		if ( empty ( $GLOBALS[ __CLASS__ ] ) )
+		if ( empty ( $GLOBALS[ $class ] ) )
 		{
-			$class = __CLASS__;
 			$GLOBALS[ $class ] = new $class;
 		}
 	}
 
 	/**
 	 * Constructor. Registers the widget areas and the Unfiltered Text widget.
+	 *
+	 * @uses apply_filters( 'magic_widgets_actions' )
 	 */
 	public function __construct()
 	{
 		// Uppercase letters don’t work.
-		$this->prefix = strtolower( __CLASS__ );
+		$this->prefix = strtolower( __CLASS__ ) . '_';
 
 		// You may add or remove actions here.
 		// Use add_filter( 'magic_widgets_actions', 'your custom_filter', 10, 1 );
@@ -64,19 +70,30 @@ class Toscho_Magic_Widgets
 		// The extra widget.
 		register_widget( 'Unfiltered_Text_Widget' );
 
+		$this->sidebar_actions();
+	}
+
+	/**
+	 * Set up sidebars and add the print_widget action.
+	 *
+	 * @uses add_action()
+	 * @return void
+	 */
+	public function sidebar_actions()
+	{
 		// Register the areas and additional actions.
 		foreach ( $this->actions as $action => $name )
 		{
 			register_sidebar(
 				array (
 					'name'          => $name
-				,	'id'            => $this->prefix . '_' . $action
+				,	'id'            => $this->prefix . $action
+				,	'description'   => 'Use the *Unfiltered Text* Widget.'
 				// Erase all other output
 				,	'before_widget' => ''
 				,	'after_widget'  => ''
 				,	'before_title'  => ''
 				,	'after_title'   => ''
-				,	'description'   => 'Use the *Unfiltered Text* Widget.'
 				)
 			);
 
@@ -91,16 +108,19 @@ class Toscho_Magic_Widgets
 	public function print_widget()
 	{
 		// current_filter() is the name of the action.
-		dynamic_sidebar( $this->prefix . '_' . current_filter() );
+		dynamic_sidebar( $this->prefix . current_filter() );
 	}
 }
 
 /**
- * Simpified copy of the native text widget class.
+ * Simplified variant of the native text widget class.
  * @version 1.0
  */
 class Unfiltered_Text_Widget extends WP_Widget
 {
+	/**
+	 * @uses apply_filters( 'magic_widgets_name' )
+	 */
 	public function __construct()
 	{
 		// You may change the name per filter.
@@ -153,6 +173,15 @@ class Unfiltered_Text_Widget extends WP_Widget
 		?>"><?php
 			echo $text;
 		?></textarea>
+		<?php
+		/*
+		if ( ! empty ( $text ) )
+		{
+			print '<h3>Preview</h3><div style="border:3px solid #369;padding:10px">'
+			. $instance['text'] . '</div>';
+		}
+		*/
+		?>
 <?php
 	}
 }
