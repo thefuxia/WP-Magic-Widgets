@@ -121,6 +121,8 @@ class Toscho_Magic_Widgets
 class Unfiltered_Text_Widget extends WP_Widget
 {
 	/**
+	 * Constructor
+	 *
 	 * @uses apply_filters( 'magic_widgets_name' )
 	 */
 	public function __construct()
@@ -129,20 +131,21 @@ class Unfiltered_Text_Widget extends WP_Widget
 		// Use add_filter( 'magic_widgets_name', 'your custom_filter', 10, 1 );
 		$widgetname = apply_filters( 'magic_widgets_name', 'Unfiltered Text' );
 		parent::__construct(
-			'unfiltered_text'
-		,	$widgetname
-		,	array( 'description' => 'Pure Markup' )
-		,	array( 'width' => 300, 'height' => 150 )
+			'unfiltered_text',
+			$widgetname,
+			array( 'description' => 'Pure Markup' ),
+			array( 'width' => 300, 'height' => 150 )
 		);
 	}
 
 	/**
 	 * Output.
-	 * @param array $args
-	 * @param array $instance
+	 *
+	 * @param  array $args
+	 * @param  array $instance
 	 * @return array
 	 */
-	public function widget( $args, $instance )
+	public function widget( Array $args, Array $instance )
 	{
 		echo $instance['text'];
 	}
@@ -153,7 +156,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	 * @param  array $old_instance Old content
 	 * @return array New content
 	 */
-	public function update( $new_instance, $old_instance )
+	public function update( Array $new_instance, Array $old_instance )
 	{
 		return $new_instance;
 	}
@@ -163,18 +166,20 @@ class Unfiltered_Text_Widget extends WP_Widget
 	 * @param array $instance
 	 * @return void
 	 */
-	public function form( $instance )
+	public function form( Array $instance )
 	{
-		$instance = wp_parse_args( (array) $instance, array( 'text' => '' ) );
-		$text     = format_to_edit($instance['text']);
-?>
-		<textarea class="widefat" rows="7" cols="20" id="<?php
-			echo $this->get_field_id('text');
-		?>" name="<?php
-			echo $this->get_field_name('text');
-		?>"><?php
-			echo $text;
-		?></textarea>
-<?php
+		$instance = wp_parse_args(
+			$instance,
+			array(
+				'text' => ''
+			)
+		);
+		$text     = format_to_edit( $instance[ 'text' ] );
+		printf(
+			'<textarea class="widefat" rows="7" cols="20" id="%1$s" name="%2$s">%3$s</textarea>',
+			$this->get_field_id( 'text' ),
+			$this->get_field_name( 'text' ),
+			$text
+		);
 	}
 }
