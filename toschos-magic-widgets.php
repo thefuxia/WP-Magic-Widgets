@@ -1,12 +1,14 @@
 <?php
 /*
-Plugin Name: Toscho’s Magic Widgets
-Plugin URI:  http://toscho.de/2011/wordpress-magische-widgets/
-Description: Extra widgets for your HTML headers and footers.
-Version:     2013.05.28
-Author:      Thomas Scholz
-Author URI:  http://toscho.de
-License:     GPL v2
+ * Plugin Name: Toscho’s Magic Widgets
+ * Plugin URI:  http://toscho.de/2011/wordpress-magische-widgets/
+ * Description: Extra widgets for your HTML headers and footers.
+ * Version:     2013.05.28
+ * Author:      Thomas Scholz
+ * Author URI:  http://toscho.de
+ * License:     GPL v2
+ * Textdomain:  plugin_magic_widgets
+ * Domain Path: /languages
 */
 
 add_action( 'widgets_init', array ( 'Toscho_Magic_Widgets', 'init' ), 20 );
