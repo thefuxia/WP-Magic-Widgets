@@ -259,7 +259,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 			);
 		}
 
-		return "$out</fieldset>";
+		return "$out</ul></fieldset>";
 	}
 
 	/**
