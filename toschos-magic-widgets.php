@@ -23,12 +23,7 @@ class Toscho_Magic_Widgets
 	 * Actions and names for the new Widgets.
 	 * @var array
 	 */
-	protected $actions = array (
-		'wp_head'       => 'Front End Header'
-	,	'wp_footer'     => 'Front End Footer'
-	,	'admin_head'    => 'Back End Header'
-	,	'admin_footer'  => 'Back End Footer'
-	);
+	protected $actions = array ();
 
 	/**
 	 * Prefix for the widget IDs.
@@ -64,11 +59,6 @@ class Toscho_Magic_Widgets
 	{
 		// Uppercase letters don’t work.
 		$this->prefix = strtolower( __CLASS__ ) . '_';
-
-		// You may add or remove actions here.
-		// Use add_filter( 'magic_widgets_actions', 'your custom_filter', 10, 1 );
-		$this->actions = apply_filters( 'magic_widgets_actions', $this->actions );
-
 		// The extra widget.
 		register_widget( 'Unfiltered_Text_Widget' );
 
@@ -83,6 +73,17 @@ class Toscho_Magic_Widgets
 	 */
 	public function sidebar_actions()
 	{
+		$this->actions = array (
+			'wp_head'       => __( 'Front End Header', 'plugin_magic_widgets' ),
+			'wp_footer'     => __( 'Front End Footer', 'plugin_magic_widgets' ),
+			'admin_head'    => __( 'Back End Header', 'plugin_magic_widgets' ),
+			'admin_footer'  => __( 'Back End Footer', 'plugin_magic_widgets' )
+		);
+
+		// You may add or remove actions here.
+		// Use add_filter( 'magic_widgets_actions', 'your custom_filter', 10, 1 );
+		$this->actions = apply_filters( 'magic_widgets_actions', $this->actions );
+
 		// Register the areas and additional actions.
 		foreach ( $this->actions as $action => $name )
 		{
@@ -90,7 +91,7 @@ class Toscho_Magic_Widgets
 				array (
 					'name'          => $name
 				,	'id'            => $this->prefix . $action
-				,	'description'   => 'Use the *Unfiltered Text* Widget.'
+				,	'description'   => __( 'Use the Unfiltered Text widget.', 'plugin_magic_widgets' )
 				// Erase all other output
 				,	'before_widget' => ''
 				,	'after_widget'  => ''
@@ -133,7 +134,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 		parent::__construct(
 			'unfiltered_text',
 			$widgetname,
-			array( 'description' => 'Pure Markup' ),
+			array( 'description' => __( 'Pure Markup', 'plugin_magic_widgets' ) ),
 			array( 'width' => 300, 'height' => 150 )
 		);
 	}
