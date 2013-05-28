@@ -218,7 +218,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	protected function get_textarea( $content, $name )
 	{
 		return sprintf(
-			'<textarea class="widefat" rows="7" cols="20" id="%1$s" name="%2$s">%3$s</textarea>',
+			'<p><textarea class="widefat" rows="7" cols="20" id="%1$s" name="%2$s">%3$s</textarea></p>',
 			$this->get_field_id( $name ),
 			$this->get_field_name( $name ),
 			$content
@@ -235,12 +235,12 @@ class Unfiltered_Text_Widget extends WP_Widget
 	protected function get_visibility_html( $current, $name )
 	{
 		$options = $this->get_visibility_options();
-		$out = '<p>' . __( 'Visible for', 'plugin_magic_widgets' );
+		$out = '<fieldset><legend>' . __( 'Visibility', 'plugin_magic_widgets' ) .'</legend><ul>';
 
 		foreach ( $options as $key => $label )
 		{
 			$out .= sprintf(
-				'<label for="%1$s"><input type="radio" name="%2$s" id="%1$s" value="%3$s" %4$s>%5$s</label>',
+				'<li><label for="%1$s"><input type="radio" name="%2$s" id="%1$s" value="%3$s" %4$s> %5$s</label></li>',
 				$this->get_field_id( $name ),
 				$this->get_field_name( $name ),
 				$key,
@@ -249,7 +249,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 			);
 		}
 
-		return "$out</p>";
+		return "$out</fieldset>";
 	}
 
 	/**
