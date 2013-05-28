@@ -240,7 +240,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	{
 		$options = $this->get_visibility_options();
 		$out = '<fieldset>
-			<legend>' . __( 'Visibility', 'plugin_magic_widgets' ) .'</legend>
+			<legend><b>' . __( 'Visibility', 'plugin_magic_widgets' ) .'</b></legend>
 			<ul>';
 
 		foreach ( $options as $key => $label )
@@ -272,7 +272,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	{
 		$options = array (
 			'all'       => __( 'All', 'plugin_magic_widgets' ),
-			'members'   => __( 'Logged in users', 'plugin_magic_widgets' ),
+			'members'   => __( 'Members', 'plugin_magic_widgets' ),
 			'anonymous' => __( 'Anonymous visitors', 'plugin_magic_widgets' )
 		);
 
