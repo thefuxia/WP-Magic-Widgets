@@ -21,20 +21,23 @@ class Toscho_Magic_Widgets
 {
 	/**
 	 * Actions and names for the new Widgets.
-	 * @var array
+	 *
+	 * @type array
 	 */
 	protected $actions = array ();
 
 	/**
 	 * Prefix for the widget IDs.
 	 * Filled by the constructor.
-	 * @var string
+	 *
+	 * @type string
 	 */
 	protected $prefix = '';
 
 	/**
 	 * Handler for the action 'widgets_init'. Instantiates this class.
-	 * @uses apply_filters( 'tmw_class', __CLASS__ )
+	 *
+	 * @uses   apply_filters tmw_class
 	 * @return void
 	 */
 	public static function init()
@@ -51,9 +54,9 @@ class Toscho_Magic_Widgets
 	}
 
 	/**
-	 * Constructor. Registers the widget areas and the Unfiltered Text widget.
+	 * Constructor
 	 *
-	 * @uses apply_filters( 'magic_widgets_actions' )
+	 * Registers the Unfiltered Text widget.
 	 */
 	public function __construct()
 	{
@@ -66,9 +69,9 @@ class Toscho_Magic_Widgets
 	}
 
 	/**
-	 * Set up sidebars and add the print_widget action.
+	 * Set up sidebars and add the print_widget action
 	 *
-	 * @uses add_action()
+	 * @uses   add_action()
 	 * @return void
 	 */
 	public function sidebar_actions()
@@ -89,14 +92,14 @@ class Toscho_Magic_Widgets
 		{
 			register_sidebar(
 				array (
-					'name'          => $name
-				,	'id'            => $this->prefix . $action
-				,	'description'   => __( 'Use the Unfiltered Text widget.', 'plugin_magic_widgets' )
+					'name'          => $name,
+					'id'            => $this->prefix . $action,
+					'description'   => __( 'Use the Unfiltered Text widget.', 'plugin_magic_widgets' ),
 				// Erase all other output
-				,	'before_widget' => ''
-				,	'after_widget'  => ''
-				,	'before_title'  => ''
-				,	'after_title'   => ''
+					'before_widget' => '',
+					'after_widget'  => '',
+					'before_title'  => '',
+					'after_title'   => ''
 				)
 			);
 
@@ -105,19 +108,22 @@ class Toscho_Magic_Widgets
 	}
 
 	/**
-	 * Output.
-	 * @return void
+	 * Output
+	 *
+	 * @return boolean
 	 */
 	public function print_widget()
 	{
 		// current_filter() is the name of the action.
-		dynamic_sidebar( $this->prefix . current_filter() );
+		return dynamic_sidebar( $this->prefix . current_filter() );
 	}
 }
 
 /**
- * Simplified variant of the native text widget class.
- * @version 1.0
+ * Similar to the native Text widget, this class offers a plain textarea.
+ * And visibility options.
+ *
+ * @version 2013.05.28
  */
 class Unfiltered_Text_Widget extends WP_Widget
 {
@@ -140,7 +146,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	}
 
 	/**
-	 * Output.
+	 * Front end output
 	 *
 	 * @param  array $args
 	 * @param  array $instance
@@ -174,7 +180,8 @@ class Unfiltered_Text_Widget extends WP_Widget
 	}
 
 	/**
-	 * Prepares the content. Nothing to do here.
+	 * Prepares the content
+	 *
 	 * @param  array $new_instance New content
 	 * @param  array $old_instance Old content
 	 * @return array New content
@@ -192,7 +199,8 @@ class Unfiltered_Text_Widget extends WP_Widget
 	}
 
 	/**
-	 * Backend form.
+	 * Backend form
+	 *
 	 * @param array $instance
 	 * @return void
 	 */
@@ -205,13 +213,14 @@ class Unfiltered_Text_Widget extends WP_Widget
 				'visibility' => $this->get_default_visibility()
 			)
 		);
+
 		$text = format_to_edit( $instance[ 'text' ] );
 		print $this->get_textarea( $text, 'text' );
 		print $this->get_visibility_html( $instance[ 'visibility' ], 'visibility' );
 	}
 
 	/**
-	 * Create the textarea for the main content.
+	 * Create the textarea for the main content
 	 *
 	 * @param  string $content
 	 * @param  string $name
@@ -230,7 +239,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	}
 
 	/**
-	 * Render visibility radio buttons.
+	 * Render visibility radio buttons
 	 *
 	 * @param  string $current
 	 * @param  string $name
@@ -263,7 +272,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	}
 
 	/**
-	 * Default options for widget visibility.
+	 * Default options for widget visibility
 	 *
 	 * @uses   apply_filters tmw_visibility_options
 	 * @return string
@@ -280,7 +289,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	}
 
 	/**
-	 * Get the first visibility options key as default.
+	 * Get the first visibility options key as default
 	 *
 	 * @return string
 	 */
