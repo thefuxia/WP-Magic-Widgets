@@ -129,7 +129,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	{
 		// You may change the name per filter.
 		// Use add_filter( 'magic_widgets_name', 'your custom_filter', 10, 1 );
-		$widgetname = apply_filters( 'magic_widgets_name', 'Unfiltered Text' );
+		$widgetname = __( 'Unfiltered Text', 'plugin_magic_widgets' );
 		parent::__construct(
 			'unfiltered_text',
 			$widgetname,
