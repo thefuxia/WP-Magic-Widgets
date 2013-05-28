@@ -123,19 +123,19 @@ class Unfiltered_Text_Widget extends WP_Widget
 {
 	/**
 	 * Constructor
-	 *
-	 * @uses apply_filters( 'magic_widgets_name' )
 	 */
 	public function __construct()
 	{
-		// You may change the name per filter.
-		// Use add_filter( 'magic_widgets_name', 'your custom_filter', 10, 1 );
-		$widgetname = __( 'Unfiltered Text', 'plugin_magic_widgets' );
 		parent::__construct(
 			'unfiltered_text',
-			$widgetname,
-			array( 'description' => __( 'Pure Markup', 'plugin_magic_widgets' ) ),
-			array( 'width' => 300, 'height' => 150 )
+			__( 'Unfiltered Text', 'plugin_magic_widgets' ),
+			array (
+				'description' => __( 'Pure Markup', 'plugin_magic_widgets' )
+			),
+			array (
+				'width'  => 300,
+				'height' => 150
+			)
 		);
 	}
 
@@ -182,6 +182,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	public function update( Array $new_instance, Array $old_instance )
 	{
 		$visibility = $this->get_visibility_options();
+
 		if ( empty ( $new_instance[ 'visibility' ] )
 			or ! isset ( $visibility[ $new_instance[ 'visibility' ] ] )
 		)
@@ -219,7 +220,9 @@ class Unfiltered_Text_Widget extends WP_Widget
 	protected function get_textarea( $content, $name )
 	{
 		return sprintf(
-			'<p><textarea class="widefat" rows="7" cols="20" id="%1$s" name="%2$s">%3$s</textarea></p>',
+			'<p>
+				<textarea class="widefat" rows="7" cols="20" id="%1$s" name="%2$s">%3$s</textarea>
+			</p>',
 			$this->get_field_id( $name ),
 			$this->get_field_name( $name ),
 			$content
@@ -236,12 +239,18 @@ class Unfiltered_Text_Widget extends WP_Widget
 	protected function get_visibility_html( $current, $name )
 	{
 		$options = $this->get_visibility_options();
-		$out = '<fieldset><legend>' . __( 'Visibility', 'plugin_magic_widgets' ) .'</legend><ul>';
+		$out = '<fieldset>
+			<legend>' . __( 'Visibility', 'plugin_magic_widgets' ) .'</legend>
+			<ul>';
 
 		foreach ( $options as $key => $label )
 		{
 			$out .= sprintf(
-				'<li><label for="%1$s"><input type="radio" name="%2$s" id="%1$s" value="%3$s" %4$s> %5$s</label></li>',
+				'<li>
+					<label for="%1$s">
+						<input type="radio" name="%2$s" id="%1$s" value="%3$s" %4$s> %5$s
+					</label>
+				</li>',
 				$this->get_field_id( $name ),
 				$this->get_field_name( $name ),
 				$key,
@@ -279,6 +288,5 @@ class Unfiltered_Text_Widget extends WP_Widget
 	{
 		$options = $this->get_visibility_options();
 		return key( $options );
-
 	}
 }
