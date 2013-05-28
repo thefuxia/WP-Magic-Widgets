@@ -143,11 +143,33 @@ class Unfiltered_Text_Widget extends WP_Widget
 	 *
 	 * @param  array $args
 	 * @param  array $instance
-	 * @return array
+	 * @return void
 	 */
 	public function widget( Array $args, Array $instance )
 	{
-		echo $instance['text'];
+		do_action( 'tmw_before_show_widget', $instance, $args );
+
+		if ( empty ( $instance[ 'visibility' ] ) )
+			return print $instance[ 'text' ];
+
+		$user_logged_in = is_user_logged_in();
+
+		switch ( $instance[ 'visibility' ] )
+		{
+			case 'all':
+				return print $instance['text'];
+
+			case 'members':
+				return print $user_logged_in ? $instance['text'] : '';
+
+			case 'anonymous':
+				return print $user_logged_in ? '' : $instance['text'];
+
+			default: // custom visibility option
+				do_action( 'tmw_show_widget', $instance, $args );
+		}
+
+		do_action( 'tmw_after_show_widget', $instance, $args );
 	}
 
 	/**
@@ -158,6 +180,12 @@ class Unfiltered_Text_Widget extends WP_Widget
 	 */
 	public function update( Array $new_instance, Array $old_instance )
 	{
+		$visibility = $this->get_visibility_options();
+		if ( empty ( $new_instance[ 'visibility' ] )
+			or ! isset ( $visibility[ $new_instance[ 'visibility' ] ] )
+		)
+			$new_instance[ 'visibility' ] = $this->get_default_visibility();
+
 		return $new_instance;
 	}
 
@@ -171,11 +199,13 @@ class Unfiltered_Text_Widget extends WP_Widget
 		$instance = wp_parse_args(
 			$instance,
 			array(
-				'text' => ''
+				'text'       => '',
+				'visibility' => $this->get_default_visibility()
 			)
 		);
 		$text = format_to_edit( $instance[ 'text' ] );
 		print $this->get_textarea( $text, 'text' );
+		print $this->get_visibility_html( $instance[ 'visibility' ], 'visibility' );
 	}
 
 	/**
@@ -193,5 +223,61 @@ class Unfiltered_Text_Widget extends WP_Widget
 			$this->get_field_name( $name ),
 			$content
 		);
+	}
+
+	/**
+	 * Render visibility radio buttons.
+	 *
+	 * @param  string $current
+	 * @param  string $name
+	 * @return string
+	 */
+	protected function get_visibility_html( $current, $name )
+	{
+		$options = $this->get_visibility_options();
+		$out = '<p>' . __( 'Visible for', 'plugin_magic_widgets' );
+
+		foreach ( $options as $key => $label )
+		{
+			$out .= sprintf(
+				'<label for="%1$s"><input type="radio" name="%2$s" id="%1$s" value="%3$s" %4$s>%5$s</label>',
+				$this->get_field_id( $name ),
+				$this->get_field_name( $name ),
+				$key,
+				checked( $key, $current, FALSE ),
+				esc_html( $label )
+			);
+		}
+
+		return "$out</p>";
+	}
+
+	/**
+	 * Default options for widget visibility.
+	 *
+	 * @uses   apply_filters tmw_visibility_options
+	 * @return string
+	 */
+	protected function get_visibility_options()
+	{
+		$options = array (
+			'all'       => __( 'All', 'plugin_magic_widgets' ),
+			'members'   => __( 'Logged in users', 'plugin_magic_widgets' ),
+			'anonymous' => __( 'Anonymous visitors', 'plugin_magic_widgets' )
+		);
+
+		return apply_filters( 'tmw_visibility_options', $options );
+	}
+
+	/**
+	 * Get the first visibility options key as default.
+	 *
+	 * @return string
+	 */
+	protected function get_default_visibility()
+	{
+		$options = $this->get_visibility_options();
+		return key( $options );
+
 	}
 }
