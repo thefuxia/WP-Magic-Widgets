@@ -272,8 +272,8 @@ class Unfiltered_Text_Widget extends WP_Widget
 	{
 		$options = array (
 			'all'       => __( 'All', 'plugin_magic_widgets' ),
-			'members'   => __( 'Members', 'plugin_magic_widgets' ),
-			'anonymous' => __( 'Anonymous visitors', 'plugin_magic_widgets' )
+			'members'   => __( 'Members only', 'plugin_magic_widgets' ),
+			'anonymous' => __( 'Anonymous visitors only', 'plugin_magic_widgets' )
 		);
 
 		return apply_filters( 'tmw_visibility_options', $options );
