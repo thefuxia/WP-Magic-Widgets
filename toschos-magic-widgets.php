@@ -60,6 +60,7 @@ class Toscho_Magic_Widgets
 	 */
 	public function __construct()
 	{
+		$dummy = __( 'Extra widgets for your HTML headers and footers.', 'plugin_magic_widgets' );
 		// Uppercase letters don’t work.
 		$this->prefix = strtolower( __CLASS__ ) . '_';
 
