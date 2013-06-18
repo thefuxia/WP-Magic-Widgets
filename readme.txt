@@ -27,11 +27,6 @@ Send me your bug reports and suggestions via my [contact page](http://toscho.de/
 Upload the directory to your plugin directory. 
 Activate the plugin through the 'Plugins' menu in WordPress.
 
-
-== Screenshots ==
-1. Four new sidebars
-2. The Unfiltered Text widget in action
-
 == Changelog ==
 
 Version 2013.06.02
