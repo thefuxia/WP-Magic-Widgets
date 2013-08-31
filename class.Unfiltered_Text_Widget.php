@@ -33,7 +33,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	 * @param  array $instance
 	 * @return void
 	 */
-	public function widget( Array $args, Array $instance )
+	public function widget( $args, $instance )
 	{
 		do_action( 'tmw_before_show_widget', $instance, $args );
 
@@ -67,7 +67,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	 * @param  array $old_instance Old content
 	 * @return array New content
 	 */
-	public function update( Array $new_instance, Array $old_instance )
+	public function update( $new_instance, $old_instance )
 	{
 		$visibility = $this->get_visibility_options();
 
@@ -85,7 +85,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	 * @param array $instance
 	 * @return void
 	 */
-	public function form( Array $instance )
+	public function form( $instance )
 	{
 		$instance = wp_parse_args(
 			$instance,
