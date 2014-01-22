@@ -3,7 +3,7 @@
  * Plugin Name: Toscho’s Magic Widgets
  * Plugin URI:  http://toscho.de/2011/wordpress-magische-widgets/
  * Description: Extra widgets for your HTML headers and footers.
- * Version:     2013.05.28
+ * Version:     2014.01.22
  * Author:      Thomas Scholz
  * Author URI:  http://toscho.de
  * License:     GPL v2
