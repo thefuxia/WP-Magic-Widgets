@@ -117,7 +117,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	{
 		return sprintf(
 			'<p>
-			<textarea class="widefat" rows="7" cols="20" id="%1$s" name="%2$s">%3$s</textarea>
+			<textarea class="widefat code" rows="7" cols="20" id="%1$s" name="%2$s">%3$s</textarea>
 			</p>',
 			$this->get_field_id( $name ),
 			$this->get_field_name( $name ),
