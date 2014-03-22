@@ -117,7 +117,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	 * @param  string $title
 	 * @return string
 	 */
-	private function get_title( $title )
+	protected function get_title( $title )
 	{
 		$title = esc_attr( $title );
 		$id    = $this->get_field_id( 'title' );
