@@ -6,7 +6,7 @@ Author:            toscho
 Tags:              widget, admin, sidebar
 Requires at least: 3.0
 Tested up to:      3.9
-Stable tag:        2013.06.02
+Stable tag:        2014.03.22
 Version:           2014.03.22
 License:           GPLv2 or later
 
