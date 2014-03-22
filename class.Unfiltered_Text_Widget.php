@@ -162,7 +162,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 	 * Default options for widget visibility
 	 *
 	 * @uses   apply_filters tmw_visibility_options
-	 * @return string
+	 * @return array
 	 */
 	protected function get_visibility_options()
 	{
