@@ -37,21 +37,27 @@ class Unfiltered_Text_Widget extends WP_Widget
 	{
 		do_action( 'tmw_before_show_widget', $instance, $args );
 
-		if ( empty ( $instance[ 'visibility' ] ) )
-			return print $instance[ 'text' ];
+		if ( empty ( $instance[ 'visibility' ] ) ) {
+			print $instance[ 'text' ];
+
+			return;
+		}
 
 		$user_logged_in = is_user_logged_in();
 
 		switch ( $instance[ 'visibility' ] )
 		{
 			case 'all':
-				return print $instance['text'];
+				print $instance['text'];
+				break;
 
 			case 'members':
-				return print $user_logged_in ? $instance['text'] : '';
+				print $user_logged_in ? $instance['text'] : '';
+				break;
 
 			case 'anonymous':
-				return print $user_logged_in ? '' : $instance['text'];
+				print $user_logged_in ? '' : $instance['text'];
+				break;
 
 			default: // custom visibility option
 				do_action( 'tmw_show_widget', $instance, $args );
