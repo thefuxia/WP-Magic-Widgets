@@ -82,6 +82,8 @@ class Unfiltered_Text_Widget extends WP_Widget
 		)
 			$new_instance[ 'visibility' ] = $this->get_default_visibility();
 
+		$new_instance[ 'title' ] = esc_attr( $new_instance[ 'title' ] );
+
 		return $new_instance;
 	}
 
@@ -97,13 +99,36 @@ class Unfiltered_Text_Widget extends WP_Widget
 			$instance,
 			array(
 				'text'       => '',
+				'title'      => '',
 				'visibility' => $this->get_default_visibility()
 			)
 		);
 
+		print $this->get_title( $instance[ 'title' ] );
 		$text = format_to_edit( $instance[ 'text' ] );
 		print $this->get_textarea( $text, 'text' );
 		print $this->get_visibility_html( $instance[ 'visibility' ], 'visibility' );
+	}
+
+	/**
+	 * Add a title to identify the widget in the widget manager.
+	 *
+	 * @ticket https://github.com/toscho/WP-Magic-Widgets/issues/3
+	 * @param  string $title
+	 * @return string
+	 */
+	private function get_title( $title )
+	{
+		$title = esc_attr( $title );
+		$id    = $this->get_field_id( 'title' );
+		$name  = $this->get_field_name( 'title' );
+		$label = __( 'Title:' );
+
+		return "<p>
+			<label for='$id'>$label
+				<input class='widefat' id='$id' name='$name' value='$title' type='text'>
+			</label>
+		</p>";
 	}
 
 	/**
