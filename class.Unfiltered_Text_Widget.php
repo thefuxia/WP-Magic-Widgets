@@ -141,7 +141,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 				<input type="radio" name="%2$s" id="%1$s" value="%3$s" %4$s> %5$s
 				</label>
 				</li>',
-				$this->get_field_id( $name ),
+				$this->get_field_id( $key ),
 				$this->get_field_name( $name ),
 				$key,
 				checked( $key, $current, FALSE ),
