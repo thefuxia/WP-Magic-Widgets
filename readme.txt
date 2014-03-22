@@ -1,7 +1,7 @@
 === Magic Widgets ===
 Author URI:        http://toscho.de
 Plugin URI:        http://toscho.de/2011/wordpress-plugin-magische-widgets/
-Contributors:      toscho
+Contributors:      toscho, dnaber-de
 Author:            toscho
 Tags:              widget, admin, sidebar
 Requires at least: 3.0
@@ -28,6 +28,13 @@ Upload the directory to your plugin directory.
 Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+
+Version 2014.03.22
+
+	* Fixed labels for visibility options.
+	* Use fixed font for the textarea.
+	* Added a title to identify the widgets easier. The title will not be printed in sidebars, it is for internal use only.
+	* Added @dnaber-de as contributor. Thanks!
 
 Version 2013.06.02
 
