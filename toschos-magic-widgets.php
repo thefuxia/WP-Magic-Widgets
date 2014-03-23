@@ -90,22 +90,32 @@ class Toscho_Magic_Widgets
 
 		// Register the areas and additional actions.
 		foreach ( $actions as $action => $name )
-		{
-			register_sidebar(
-				array (
-					'name'          => $name,
-					'id'            => $this->prefix . $action,
-					'description'   => __( 'Use the Unfiltered Text widget.', 'plugin_magic_widgets' ),
-				// Erase all other output
-					'before_widget' => '',
-					'after_widget'  => '',
-					'before_title'  => '',
-					'after_title'   => ''
-				)
-			);
+			$this->register_action( $action, $name );
+	}
 
-			add_action( $action, array ( $this, 'print_widget' ) );
-		}
+	/**
+	 * Register a sidebar for an action.
+	 *
+	 * @param  string $action Action name
+	 * @param  $name Sidebar name
+	 * @return void
+	 */
+	private function register_action( $action, $name )
+	{
+		register_sidebar(
+			array (
+				'name'          => $name,
+				'id'            => $this->prefix . $action,
+				'description'   => __( 'Use the Unfiltered Text widget.', 'plugin_magic_widgets' ),
+				// Erase all other output
+				'before_widget' => '',
+				'after_widget'  => '',
+				'before_title'  => '',
+				'after_title'   => ''
+			)
+		);
+
+		add_action( $action, array ( $this, 'print_widget' ) );
 	}
 
 	/**
