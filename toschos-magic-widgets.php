@@ -84,7 +84,7 @@ class Toscho_Magic_Widgets
 		 * Change extra sidebar registrations.
 		 * You must return an array.
 		 *
-		 * @param array $this->actions
+		 * @param array $actions
 		 */
 		$actions = apply_filters( 'magic_widgets_actions', $actions );
 
