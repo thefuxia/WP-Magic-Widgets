@@ -70,7 +70,7 @@ class Unfiltered_Text_Widget extends WP_Widget
 				/**
 				 * Print custom content.
 				 *
-				 * @param array $instance Current widget data, 'text' and 'title'.
+				 * @param array $instance Current widget data, 'text', 'visibility' and 'title'.
 				 * @param array $args     Sidebar registration args, 'before' and so on.
 				 */
 				do_action( 'tmw_show_widget', $instance, $args );
