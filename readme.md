@@ -37,7 +37,7 @@ The widget class `Unfiltered_Text_Widget` offers more hooks:
 		'anonymous' => __( 'Anonymous visitors only', 'plugin_magic_widgets' )
 	);
 
-You can new options for particular roles, languages, visitors with comment
+You can add new options for particular roles, languages, visitors with comment
 cookies … be creative.
 
 Then you have to hook into the output handler:
