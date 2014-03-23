@@ -4,6 +4,7 @@
 
  * Added inline documentation for hooks.
  * Fixed some code inspection warnings.
+ * Add a `readme.md` for GitHub with developer instructions.
 
 ## Version 2014.03.22
 
