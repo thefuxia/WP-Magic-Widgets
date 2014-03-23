@@ -20,13 +20,6 @@ add_action( 'widgets_init', array ( 'Toscho_Magic_Widgets', 'init' ), 20 );
 class Toscho_Magic_Widgets
 {
 	/**
-	 * Actions and names for the new Widgets.
-	 *
-	 * @type array
-	 */
-	protected $actions = array ();
-
-	/**
 	 * Prefix for the widget IDs.
 	 * Filled by the constructor.
 	 *
@@ -80,7 +73,7 @@ class Toscho_Magic_Widgets
 	 */
 	public function sidebar_actions()
 	{
-		$this->actions = array (
+		$actions = array (
 			'wp_head'       => __( 'Front End Header', 'plugin_magic_widgets' ),
 			'wp_footer'     => __( 'Front End Footer', 'plugin_magic_widgets' ),
 			'admin_head'    => __( 'Back End Header', 'plugin_magic_widgets' ),
@@ -93,10 +86,10 @@ class Toscho_Magic_Widgets
 		 *
 		 * @param array $this->actions
 		 */
-		$this->actions = apply_filters( 'magic_widgets_actions', $this->actions );
+		$actions = apply_filters( 'magic_widgets_actions', $actions );
 
 		// Register the areas and additional actions.
-		foreach ( $this->actions as $action => $name )
+		foreach ( $actions as $action => $name )
 		{
 			register_sidebar(
 				array (
