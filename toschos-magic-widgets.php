@@ -71,8 +71,10 @@ class Toscho_Magic_Widgets
 		// The extra widget.
 		$widget_class = 'Unfiltered_Text_Widget';
 
-		if ( ! class_exists( $widget_class ) )
+		if ( ! class_exists( $widget_class ) ) {
+			/** @noinspection PhpIncludeInspection */
 			require_once plugin_dir_path( __FILE__ ) . "class.$widget_class.php";
+		}
 
 		register_widget( $widget_class );
 
