@@ -52,11 +52,11 @@ class Unfiltered_Text_Widget extends WP_Widget
 				break;
 
 			case 'members':
-				print ( $user_logged_in ? $instance['text'] : '' );
+				print ( $user_logged_in ? $instance[ 'text' ] : '' );
 				break;
 
 			case 'anonymous':
-				print ( $user_logged_in ? '' : $instance['text'] );
+				print ( $user_logged_in ? '' : $instance[ 'text' ] );
 				break;
 
 			default: // custom visibility option
