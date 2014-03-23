@@ -37,20 +37,11 @@ class Toscho_Magic_Widgets
 	/**
 	 * Handler for the action 'widgets_init'. Instantiates this class.
 	 *
-	 * @uses   apply_filters tmw_class
 	 * @return void
 	 */
 	public static function init()
 	{
-		// If want to use another class (an extension maybe),
-		// change the class name here.
-		$class = apply_filters( 'tmw_class', __CLASS__ );
-
-		// Named global variable to make access for other scripts easier.
-		if ( empty ( $GLOBALS[ $class ] ) )
-		{
-			$GLOBALS[ $class ] = new $class;
-		}
+		new self;
 	}
 
 	/**
