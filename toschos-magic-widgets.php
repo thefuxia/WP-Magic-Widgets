@@ -97,7 +97,7 @@ class Toscho_Magic_Widgets
 	 * Register a sidebar for an action.
 	 *
 	 * @param  string $action Action name
-	 * @param  $name Sidebar name
+	 * @param  string $name   Sidebar name
 	 * @return void
 	 */
 	private function register_action( $action, $name )
