@@ -4,7 +4,7 @@
  * Similar to the native Text widget, this class offers a plain textarea.
  * And visibility options.
  *
- * @version 2013.05.28
+ * @version 2014.03.23
  */
 class Unfiltered_Text_Widget extends WP_Widget
 {
