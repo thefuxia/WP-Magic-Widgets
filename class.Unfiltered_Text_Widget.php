@@ -35,6 +35,12 @@ class Unfiltered_Text_Widget extends WP_Widget
 	 */
 	public function widget( $args, $instance )
 	{
+		/**
+		 * Create output before widget output.
+		 *
+		 * @param array $instance Current widget data, 'text' and 'title'.
+		 * @param array $args     Sidebar registration args, 'before' and so on.
+		 */
 		do_action( 'tmw_before_show_widget', $instance, $args );
 
 		if ( empty ( $instance[ 'visibility' ] ) ) {
@@ -60,9 +66,22 @@ class Unfiltered_Text_Widget extends WP_Widget
 				break;
 
 			default: // custom visibility option
+
+				/**
+				 * Print custom content.
+				 *
+				 * @param array $instance Current widget data, 'text' and 'title'.
+				 * @param array $args     Sidebar registration args, 'before' and so on.
+				 */
 				do_action( 'tmw_show_widget', $instance, $args );
 		}
 
+		/**
+		 * Create output after widget output.
+		 *
+		 * @param array $instance Current widget data, 'text' and 'title'.
+		 * @param array $args     Sidebar registration args, 'before' and so on.
+		 */
 		do_action( 'tmw_after_show_widget', $instance, $args );
 	}
 
@@ -197,6 +216,12 @@ class Unfiltered_Text_Widget extends WP_Widget
 			'anonymous' => __( 'Anonymous visitors only', 'plugin_magic_widgets' )
 		);
 
+		/**
+		 * Add custom visibility options, or remove existing ones.
+		 * You *must* return an array.
+		 *
+		 * @param array $options
+		 */
 		return apply_filters( 'tmw_visibility_options', $options );
 	}
 
