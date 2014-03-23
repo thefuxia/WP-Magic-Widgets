@@ -87,8 +87,12 @@ class Toscho_Magic_Widgets
 			'admin_footer'  => __( 'Back End Footer', 'plugin_magic_widgets' )
 		);
 
-		// You may add or remove actions here.
-		// Use add_filter( 'magic_widgets_actions', 'your custom_filter', 10, 1 );
+		/**
+		 * Change extra sidebar registrations.
+		 * You must return an array.
+		 *
+		 * @param array $this->actions
+		 */
 		$this->actions = apply_filters( 'magic_widgets_actions', $this->actions );
 
 		// Register the areas and additional actions.
