@@ -14,6 +14,7 @@ If you want to help: we need more translations.
 
 There is one hook in the main plugin class:
 
+```php
 	$actions = array (
 		'wp_head'       => __( 'Front End Header', 'plugin_magic_widgets' ),
 		'wp_footer'     => __( 'Front End Footer', 'plugin_magic_widgets' ),
@@ -22,35 +23,43 @@ There is one hook in the main plugin class:
 	);
 
 	$actions = apply_filters( 'magic_widgets_actions', $actions );
+```
 
 You can add your own sidebar areas here.
 
 The widget class `Unfiltered_Text_Widget` offers more hooks:
 
+```php
 	apply_filters( 'tmw_visibility_options', $options )
-
+```
 `$options` is a list of visibility selections:
 
+```php
 	$options = array (
 		'all'       => __( 'All', 'plugin_magic_widgets' ),
 		'members'   => __( 'Members only', 'plugin_magic_widgets' ),
 		'anonymous' => __( 'Anonymous visitors only', 'plugin_magic_widgets' )
 	);
+```
 
 You can add new options for particular roles, languages, visitors with comment
 cookies … be creative.
 
 Then you have to hook into the output handler:
 
+```php
 	do_action( 'tmw_show_widget', $instance, $args );
+```
 
 `$instance['visibility']` will tell you what visibility the user has selected.
 This action fires for custom visibility selections only.
 
 There are two other output actions with the same arguments:
 
+```php
 	do_action( 'tmw_before_show_widget', $instance, $args );
 	do_action( 'tmw_after_show_widget', $instance, $args );
+```
 
 Both run on every output, no matter what the `visibility` is.
 
