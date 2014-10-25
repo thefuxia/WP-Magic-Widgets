@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Toscho’s Magic Widgets v2013.05.28\n"
+"Project-Id-Version: Toscho’s Magic Widgets v2014.03.23\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-06-01 22:21:56+0000\n"
+"PO-Revision-Date: 2014-10-25 20:53:24+0000\n"
 "Last-Translator: toscho <info@toscho.de>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -30,53 +30,68 @@ msgstr "Ungefilterter Text"
 msgid "Pure Markup"
 msgstr "Reines Markup"
 
-#: class.Unfiltered_Text_Widget.php:133
+#: class.Unfiltered_Text_Widget.php:183
 #@ plugin_magic_widgets
 msgid "Visibility"
 msgstr "Sichtbarkeit"
 
-#: class.Unfiltered_Text_Widget.php:164
+#: class.Unfiltered_Text_Widget.php:214
 #@ plugin_magic_widgets
 msgid "All"
 msgstr "Alle"
 
-#: class.Unfiltered_Text_Widget.php:165
+#: class.Unfiltered_Text_Widget.php:215
 #@ plugin_magic_widgets
 msgid "Members only"
 msgstr "Nur Mitglieder"
 
-#: class.Unfiltered_Text_Widget.php:166
+#: class.Unfiltered_Text_Widget.php:216
 #@ plugin_magic_widgets
 msgid "Anonymous visitors only"
 msgstr "Nur anonyme Besucher"
 
-#: toschos-magic-widgets.php:90
+#: toschos-magic-widgets.php:77
 #@ plugin_magic_widgets
 msgid "Front End Header"
 msgstr "Frontend Kopfteil"
 
-#: toschos-magic-widgets.php:91
+#: toschos-magic-widgets.php:78
 #@ plugin_magic_widgets
 msgid "Front End Footer"
 msgstr "Frontend Fußteil"
 
-#: toschos-magic-widgets.php:92
+#: toschos-magic-widgets.php:79
 #@ plugin_magic_widgets
 msgid "Back End Header"
 msgstr "Backend Kopfteil"
 
-#: toschos-magic-widgets.php:93
+#: toschos-magic-widgets.php:80
 #@ plugin_magic_widgets
 msgid "Back End Footer"
 msgstr "Backend Fußteil"
 
-#: toschos-magic-widgets.php:63
+#: toschos-magic-widgets.php:48
 #@ plugin_magic_widgets
 msgid "Extra widgets for your HTML headers and footers."
 msgstr "Extrawidgets für den HTML-Kopf- und Fußteil."
 
-#: toschos-magic-widgets.php:107
+#: toschos-magic-widgets.php:111
 #@ plugin_magic_widgets
 msgid "Use the Unfiltered Text widget."
 msgstr "Benutze das Widget Ungefilterter Text."
+
+#: class.Unfiltered_Text_Widget.php:144
+#@ default
+msgid "Title:"
+msgstr ""
+
+#: toschos-magic-widgets.php:81
+#@ plugin_magic_widgets
+msgid "Log-in Header"
+msgstr "Anmeldung Kopfteil"
+
+#: toschos-magic-widgets.php:82
+#@ plugin_magic_widgets
+msgid "Log-in Footer"
+msgstr "Anmeldung Fußteil"
 
