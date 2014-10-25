@@ -76,8 +76,10 @@ class Toscho_Magic_Widgets
 		$actions = array (
 			'wp_head'       => __( 'Front End Header', 'plugin_magic_widgets' ),
 			'wp_footer'     => __( 'Front End Footer', 'plugin_magic_widgets' ),
-			'admin_head'    => __( 'Back End Header', 'plugin_magic_widgets' ),
-			'admin_footer'  => __( 'Back End Footer', 'plugin_magic_widgets' )
+			'admin_head'    => __( 'Back End Header',  'plugin_magic_widgets' ),
+			'admin_footer'  => __( 'Back End Footer',  'plugin_magic_widgets' ),
+			'login_head'    => __( 'Log-in Header',    'plugin_magic_widgets' ),
+			'login_footer'  => __( 'Log-in Footer',    'plugin_magic_widgets' ),
 		);
 
 		/**
