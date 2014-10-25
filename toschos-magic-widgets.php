@@ -10,13 +10,6 @@
  * Textdomain:  plugin_magic_widgets
  * Domain Path: /languages
 */
-
-add_action( 'widgets_init', array ( 'Toscho_Magic_Widgets', 'init' ), 20 );
-
-/**
- * Master class.
- * @version 1.0
- */
 class Toscho_Magic_Widgets
 {
 	/**
@@ -46,6 +39,7 @@ class Toscho_Magic_Widgets
 	{
 		/** @noinspection PhpUnusedLocalVariableInspection */
 		$dummy = __( 'Extra widgets for your HTML headers and footers.', 'plugin_magic_widgets' );
+
 		// Uppercase letters don’t work.
 		$this->prefix = strtolower( __CLASS__ ) . '_';
 
@@ -161,3 +155,5 @@ class Toscho_Magic_Widgets
 		unset ( $GLOBALS['l10n']['plugin_magic_widgets'] );
 	}
 }
+
+add_action( 'widgets_init', array ( 'Toscho_Magic_Widgets', 'init' ), 20 );
