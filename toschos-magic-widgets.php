@@ -125,7 +125,16 @@ class Toscho_Magic_Widgets
 	 */
 	public function print_widget()
 	{
-		// current_filter() is the name of the action.
+		/* In wp-admin/includes/widgets.php:: wp_list_widget_controls() a filter
+		 * is set that makes all widgets render the controls instead of the
+		 * content. We have to remove it to get the real output.
+		 */
+		if ( 'admin_footer' === current_filter() )
+			remove_filter(
+				'dynamic_sidebar_params',
+				'wp_list_widget_controls_dynamic_sidebar'
+			);
+
 		return dynamic_sidebar( $this->prefix . current_filter() );
 	}
 
